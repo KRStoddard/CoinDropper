@@ -3,7 +3,7 @@
     width: 500px;
     height: 500px;
     margin: auto;
-    
+    position: absolute;
 }
 
 .dropper {
@@ -11,5 +11,12 @@
     height: 50px;
     border-radius: 50%;
     background-color: gold;
+    position: absolute;
+}
+
+.catcher {
+    height: 40px;
+    width: 60px;
+    background-color: black;
     position: absolute;
 }
