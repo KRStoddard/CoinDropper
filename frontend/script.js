@@ -1,22 +1,25 @@
 
 const dropper = document.querySelector(".dropper")
 const catcher = document.querySelector(".catcher")
+const points = document.querySelector(".points")
 
-let timerId = setInterval(dropCoin, 700)
+
+let timerId = setInterval(dropCoin, 100)
 dropper.style.left = `${Math.floor(Math.random()* 450)}px`
 
 function dropCoin(){
     let height = dropper.style.bottom.replace("px","")
     height = parseInt(height, 10)
     if (height > 24){ 
-        height = height - 25
-        dropper.style.bottom = `${height}px`
+        dropper.style.bottom = `${height - 25}px`
     }
     else if (height === 24 && withinRange()) {
         clearInterval(timerId)
         dropper.style.left = `${Math.floor(Math.random()* 450)}px`
         dropper.style.bottom = "449px"
-        timerId = setInterval(dropCoin, 700)
+        timerId = setInterval(dropCoin, 100)
+        let pointsData = parseInt(points.innerText.split(' ')[1]) + 5
+        points.innerText = `Points: ${pointsData}`
     }
     else {
         dropper.parentNode.innerHTML = "GAME OVER!"
