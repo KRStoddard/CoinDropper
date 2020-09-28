@@ -8,19 +8,19 @@ dropper.style.left = `${Math.floor(Math.random()* 450)}px`
 function dropCoin(){
     let height = dropper.style.bottom.replace("px","")
     height = parseInt(height, 10)
-    if (height > 22 && catcher.style.left != dropper.style.left){ 
+    if (height > 24){ 
         height = height - 25
         dropper.style.bottom = `${height}px`
     }
-    else if (height < 22){
-        dropper.parentNode.innerHTML = "GAME OVER!"
-        clearInterval(timerId) 
-    }
-    else if (height === 24 && withinRange()){
+    else if (height === 24 && withinRange()) {
         clearInterval(timerId)
         dropper.style.left = `${Math.floor(Math.random()* 450)}px`
         dropper.style.bottom = "449px"
         timerId = setInterval(dropCoin, 700)
+    }
+    else {
+        dropper.parentNode.innerHTML = "GAME OVER!"
+        clearInterval(timerId) 
     }
 }
 
@@ -28,7 +28,7 @@ function moveCatcherLeft() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left > 0) {
-      catcher.style.left = `${left - 25}px`
+      catcher.style.left = `${left - 20}px`
     }
 }
 
@@ -36,7 +36,7 @@ function moveCatcherRight() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left < 445) {
-      catcher.style.left = `${left + 25}px`
+      catcher.style.left = `${left + 20}px`
     }
     }
 
@@ -50,12 +50,29 @@ function moveCatcherRight() {
 })
 
 function withinRange(){
+    
     let catcherLeft = catcher.style.left.replace("px", "")
     catcherLeft = parseInt(catcherLeft, 10)
     let dropperLeft = dropper.style.left.replace("px", "")
     dropperLeft = parseInt(dropperLeft, 10)
-
-    catcherLeft <= dropperLeft + 7 && catcherLeft >= dropperLeft - 7
+    let result
+    let catcherLeftRange = []
+    let dropperLeftRange = []
+    for(let i = 0; i<61; i++) {
+        catcherLeftRange.push(catcherLeft + i)
+    }
+    for (let i = 0; i < 51; i++) {
+        dropperLeftRange.push(dropperLeft + i)
+    }
+    catcherLeftRange.forEach(num => {
+        dropperLeftRange.forEach(number => {
+            if (number === num) {
+                result = true
+            }
+        })
+    })
+    return result 
+    
 }
 
 dropCoin()
