@@ -1,28 +1,59 @@
 
-const dropper = document.querySelector(".dropper")
+const dropper1 = document.querySelector(".dropper1")
+const dropper2 = document.querySelector(".dropper2")
 const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
 
-let timerId = setInterval(dropCoin, 100)
-dropper.style.left = `${Math.floor(Math.random()* 450)}px`
+function dropperSpeed(){
+    let speed
+    let pointsData = parseInt(points.innerText.split(' ')[1])
+    if (pointsData < 25){
+        speed = 750
+    } else if(pointsData >= 25 && pointsData < 50){
+        speed = 500
+    } else if(pointsData >= 50 && pointsData < 75){
+        speed = 250
+    } else {
+        speed = 100
+    }
+    return speed
+}
 
-function dropCoin(){
+let timers = {}
+let timerId2 
+
+function setTimer(dropper, timerNum){
+    clearInterval(timers[timerNum])
+    timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
+}
+
+setTimer(dropper1, "one")
+
+setTimeout(function(){
+    setTimer(dropper2, "two")
+}, 5000)
+
+dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
+dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
+
+function dropCoin(dropper, timerNum){
     let height = dropper.style.bottom.replace("px","")
     height = parseInt(height, 10)
     if (height > 24){ 
         dropper.style.bottom = `${height - 25}px`
     }
-    else if (height === 24 && withinRange()) {
-        clearInterval(timerId)
+    else if (height === 24 && withinRange(dropper)) {
+        clearInterval(timers[timerNum])
         dropper.style.left = `${Math.floor(Math.random()* 450)}px`
         dropper.style.bottom = "449px"
-        timerId = setInterval(dropCoin, 100)
         let pointsData = parseInt(points.innerText.split(' ')[1]) + 5
         points.innerText = `Points: ${pointsData}`
+        setTimer(dropper, timerNum)
     }
     else {
         dropper.parentNode.innerHTML = "GAME OVER!"
-        clearInterval(timerId) 
+        clearInterval(timers["one"]) 
+        clearInterval(timers["two"]) 
     }
 }
 
@@ -30,15 +61,15 @@ function moveCatcherLeft() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left > 0) {
-      catcher.style.left = `${left - 25}px`
+      catcher.style.left = `${left - 20}px`
     }
 }
 
 function moveCatcherRight() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
-    if (left < 445) {
-      catcher.style.left = `${left + 25}px`
+    if (left < 440) {
+      catcher.style.left = `${left + 20}px`
     }
     }
 
@@ -51,7 +82,7 @@ function moveCatcherRight() {
     }
 })
 
-function withinRange(){
+function withinRange(dropper){
     
     let catcherLeft = catcher.style.left.replace("px", "")
     catcherLeft = parseInt(catcherLeft, 10)
@@ -66,7 +97,7 @@ function withinRange(){
     for (let i = 0; i < 51; i++) {
         dropperLeftRange.push(dropperLeft + i)
     }
-    catcherLeftRange.forEach(num => {
+    catcherLeftRange.slice(20, 40).forEach(num => {
         dropperLeftRange.forEach(number => {
             if (number === num) {
                 result = true
@@ -74,7 +105,4 @@ function withinRange(){
         })
     })
     return result 
-    
 }
-
-dropCoin()
