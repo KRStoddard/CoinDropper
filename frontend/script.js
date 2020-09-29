@@ -3,7 +3,6 @@ const dropper = document.querySelector(".dropper")
 const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
 
-
 let timerId = setInterval(dropCoin, 100)
 dropper.style.left = `${Math.floor(Math.random()* 450)}px`
 
@@ -31,7 +30,7 @@ function moveCatcherLeft() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left > 0) {
-      catcher.style.left = `${left - 20}px`
+      catcher.style.left = `${left - 25}px`
     }
 }
 
@@ -39,7 +38,7 @@ function moveCatcherRight() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left < 445) {
-      catcher.style.left = `${left + 20}px`
+      catcher.style.left = `${left + 25}px`
     }
     }
 
