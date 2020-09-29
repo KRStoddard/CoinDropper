@@ -1,5 +1,5 @@
 body {
-    background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg2.jpg");
+    background-image: url("images/bg2.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -12,7 +12,7 @@ body {
     height: 500px;
     margin: auto;
     position: absolute;
-    background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg.jpg"); 
+    background-image: url("images/bg.jpg"); 
     background-size: 144%;
     background-position: center;
     background-repeat: no-repeat;

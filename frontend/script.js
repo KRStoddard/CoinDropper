@@ -33,7 +33,7 @@ function dropperSpeed(){
 
 function setTimer(dropper, timerNum){
     clearInterval(timers[timerNum])
-    // timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
+    timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
 }
 
 function secondDropper() {
