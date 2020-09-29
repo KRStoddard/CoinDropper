@@ -4,6 +4,17 @@ const dropper2 = document.querySelector(".dropper2")
 let dropper3
 const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
+const container = document.querySelector('.game-container')
+const startButton = document.querySelector('#start-button')
+
+function startGame(){
+    if (event.target.innerText === 'Start'){
+      main()
+        startButton.style.visibility = 'hidden'
+    }
+}
+        
+
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
 dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
@@ -93,6 +104,7 @@ function continueGame(timerNum, dropper) {
 
 function gameOver(dropper) {
     dropper.parentNode.innerHTML = "GAME OVER!"
+    startButton.style.visibility = 'visible'
     clearInterval(timers["one"]) 
     clearInterval(timers["two"]) 
     clearInterval(timers["three"])
@@ -155,8 +167,10 @@ function withinRange(dropper){
                 result = true
             }
         })
-    })
-    return result 
+    }
+return result
 }
 
-main()
+
+startButton.addEventListener('click', startGame);
+
