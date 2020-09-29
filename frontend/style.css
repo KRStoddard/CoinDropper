@@ -1,4 +1,10 @@
-
+body {
+    background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    font-family: fantasy;
+}
 
 .game-container {
     border: solid black 5px;
@@ -6,7 +12,6 @@
     height: 500px;
     margin: auto;
     position: absolute;
-    /* background-image: linear-gradient(green, white); */
     background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg.jpg"); 
     background-size: 144%;
     background-position: center;
