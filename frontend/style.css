@@ -1,3 +1,6 @@
+
+
+
 .game-container {
     border: solid black 5px;
     width: 500px;
@@ -6,10 +9,47 @@
     position: absolute;
 }
 
-.dropper {
-    width: 50px;
-    height: 50px;
+.dropper1 {
+    width: 45px;
+    height: 40px;
     border-radius: 50%;
-    background-color: gold;
     position: absolute;
+    font-size: 35px;
+    text-align: center;
+    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(242,215,12,0.3);
+    border-right: 1px solid rgba(242,215,12,0.3);
+    box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
+}
+
+.dropper2 {
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 35px;
+    text-align: center;
+    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(242,215,12,0.3);
+    border-right: 1px solid rgba(242,215,12,0.3);
+    box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
+}
+
+.catcher {
+    height: 40px;
+    width: 60px;
+    background-color: black;
+    position: absolute;
+}
+
+.points {
+    border: solid black 4px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
 }
