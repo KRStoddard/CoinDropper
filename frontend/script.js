@@ -7,7 +7,7 @@ const points = document.querySelector(".points")
 const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 
-function startGame(){
+function startGame(event){
     if (event.target.innerText === 'Start'){
       main()
         startButton.style.visibility = 'hidden'
@@ -167,10 +167,8 @@ function withinRange(dropper){
                 result = true
             }
         })
-    }
-return result
+    })
+    return result
 }
-
-
 startButton.addEventListener('click', startGame);
 
