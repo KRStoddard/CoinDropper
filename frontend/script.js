@@ -1,6 +1,7 @@
 
 const dropper1 = document.querySelector(".dropper1")
 const dropper2 = document.querySelector(".dropper2")
+let dropper3
 const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
 let timers = {}
@@ -35,10 +36,10 @@ function setTimer(dropper, timerNum){
     timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
 }
 
-function secondDropper(dropper) {
-    setTimeout(function(dropper){
-        dropper.style.visibility = ""
-        setTimer(dropper, "two")
+function secondDropper() {
+    setTimeout(function(){
+        dropper2.style.visibility = ""
+        setTimer(dropper2, "two")
     }, 7000)
 }
 
@@ -59,7 +60,7 @@ function dropCoin(dropper, timerNum){
     }
     else {
         if (dropper.style.background != "black") {
-        gameOver(dropper)
+            gameOver(dropper)
         } else {
             continueGame(timerNum, dropper)
         }
@@ -69,7 +70,15 @@ function dropCoin(dropper, timerNum){
 function keepDropping(height, dropper) {
     dropper.style.bottom = `${height - 25}px`
 }
-
+function addDropper() {
+    dropper3 = document.createElement('div')
+    dropper3.innerText = "$"
+    dropper3.className = "dropper3"
+    dropper3.style.bottom = "449px"
+    dropper3.style.left = `${Math.floor(Math.random()* 450)}px`
+    document.querySelector('.game-container').append(dropper3)
+    setTimer(dropper3, "three")
+}
 function continueGame(timerNum, dropper) {
     clearInterval(timers[timerNum])
     dropper.style.left = `${Math.floor(Math.random()* 450)}px`
@@ -77,12 +86,16 @@ function continueGame(timerNum, dropper) {
     dropper.style.background = randomDropper()
     points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) + 5}`
     setTimer(dropper, timerNum)
+    if (parseInt(points.innerText.split(' ')[1]) > 300 && !dropper3) {
+        addDropper()
+    }
 }
 
 function gameOver(dropper) {
     dropper.parentNode.innerHTML = "GAME OVER!"
     clearInterval(timers["one"]) 
     clearInterval(timers["two"]) 
+    clearInterval(timers["three"])
 }
 
 function randomDropper() {
