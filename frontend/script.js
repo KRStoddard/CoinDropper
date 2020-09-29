@@ -24,7 +24,7 @@ let timerId2
 
 function setTimer(dropper, timerNum){
     clearInterval(timers[timerNum])
-    timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
+    // timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
 }
 
 setTimer(dropper1, "one")

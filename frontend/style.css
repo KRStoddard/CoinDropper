@@ -1,5 +1,10 @@
-
-
+body {
+    background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    font-family: fantasy;
+}
 
 .game-container {
     border: solid black 5px;
@@ -7,6 +12,11 @@
     height: 500px;
     margin: auto;
     position: absolute;
+    background-image: url("/Users/brianbutterly/CoinDropper/CoinDropper/bg.jpg"); 
+    background-size: 144%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: white;
 }
 
 .dropper1 {
@@ -16,7 +26,7 @@
     position: absolute;
     font-size: 35px;
     text-align: center;
-    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
+    background: linear-gradient(45deg,  rgb(211, 174, 10) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
     border-top: 1px solid rgba(255,255,255,0.3);
     border-left: 1px solid rgba(255,255,255,0.3);
     border-bottom: 1px solid rgba(242,215,12,0.3);
@@ -31,7 +41,7 @@
     position: absolute;
     font-size: 35px;
     text-align: center;
-    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
+    background: linear-gradient(45deg,  rgb(211, 174, 10) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
     border-top: 1px solid rgba(255,255,255,0.3);
     border-left: 1px solid rgba(255,255,255,0.3);
     border-bottom: 1px solid rgba(242,215,12,0.3);
@@ -40,9 +50,8 @@
 }
 
 .catcher {
-    height: 40px;
-    width: 60px;
-    background-color: black;
+    height: 50px;
+    width: 65px;
     position: absolute;
 }
 
@@ -52,4 +61,32 @@
     height: 30px;
     text-align: center;
     padding-top: 10px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+#start-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #3e8e41d2;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px #999;
+    position:relative;
+    left:-5px;
+    top:-10px;
+}
+  
+#start-button:hover {background-color: #3e8e41}
+  
+#start-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
 }
