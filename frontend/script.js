@@ -9,11 +9,13 @@ const startButton = document.querySelector('#start-button')
 
 function startGame(event){
     if (event.target.innerText === 'Start'){
+        dropper1.style.bottom = "449px"
+        dropper2.style.bottom = "449px"
+        dropper2.style.visibility = "hidden"
       main()
         startButton.style.visibility = 'hidden'
     }
 }
-        
 
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
@@ -44,7 +46,7 @@ function dropperSpeed(){
 
 function setTimer(dropper, timerNum){
     clearInterval(timers[timerNum])
-    // timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
+    timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
 }
 
 function secondDropper() {
@@ -81,6 +83,7 @@ function dropCoin(dropper, timerNum){
 function keepDropping(height, dropper) {
     dropper.style.bottom = `${height - 25}px`
 }
+
 function addDropper() {
     dropper3 = document.createElement('div')
     dropper3.innerText = "$"
@@ -103,7 +106,7 @@ function continueGame(timerNum, dropper) {
 }
 
 function gameOver(dropper) {
-    dropper.parentNode.innerHTML = "GAME OVER!"
+    alert("Game Over...You Suck!");
     startButton.style.visibility = 'visible'
     clearInterval(timers["one"]) 
     clearInterval(timers["two"]) 
