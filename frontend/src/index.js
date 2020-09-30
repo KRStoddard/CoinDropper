@@ -44,7 +44,7 @@ function createUserForm() {
             .catch(error => console.log(error))
         
         form.reset()
-        form.style.display = "none"
+        form.style.visibility = "hidden"
         startButton.style.visibility = "visible"
         
         
