@@ -85,7 +85,7 @@ function dropCoin(dropper, timerNum){
     else if (height === 24 && withinRange(dropper)) {
         if (dropper.style.background === "black") {
             let lives = loseLife()
-            if (lives === 0) {
+            if (lives < 1) {
                 gameOver(dropper)
             } else {
                 continueGame(timerNum, dropper)
@@ -101,7 +101,7 @@ function dropCoin(dropper, timerNum){
     else {
         if (dropper.style.background != "black" && dropper.style.background != "green") {
             let lives = loseLife()
-            if (lives === 0) {
+            if (lives < 1 ) {
                 gameOver(dropper)
             } else {
                 continueGame(timerNum, dropper)
@@ -157,8 +157,6 @@ function updateGame() {
         body: JSON.stringify({"points": totalPoints})
     }
     fetch(`http://localhost:3000/games/${gameId}`, reqObj)
-    .then(resp => resp.text())
-    .then(resp => console.log(resp))
 }
 
 function randomDropper() {
