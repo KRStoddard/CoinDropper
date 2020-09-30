@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def index
-        users = User.leaders[0,4] 
+        users = User.leaders[0,5] 
 
         render json: users
     end
