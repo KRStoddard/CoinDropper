@@ -9,7 +9,7 @@ body {
 }
 
 .game-container {
-    border: solid black 5px;
+    border: solid black 4px;
     width: 505px;
     height: 500px;
     margin: auto;
@@ -79,7 +79,7 @@ body {
     text-align: center;
     padding-top: 10px;
     margin-bottom: 5px;
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.5);
     float: left;
 }
 
@@ -121,16 +121,35 @@ body {
     text-align: center;
     padding-top: 10px;
     margin-bottom: 5px;
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.5);
     float: left;
 }
 
 .leaderboard {
     border: solid black 2px;
     width: 160px;
-    height: 300px;
+    height: 280px;
     text-align: center;
     padding-top: 5px;
     margin-bottom: 5px;
-    background-color: rgba(255, 255, 255, 0.678);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.game-insts {
+    border: solid black 2px;
+    width: 200px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    left:750px;
+    bottom:600px;
+    text-align: center;
+}
+
+#login-form {
+    /* background-color: red; */
+}
+
+h1 {
+    
 }
