@@ -8,6 +8,7 @@ const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 
 function startGame(event){
+        points.innerText = `Points: 0`
         dropper1.style.bottom = "449px"
         dropper2.style.bottom = "449px"
         dropper2.style.visibility = "hidden"
@@ -73,7 +74,7 @@ function dropCoin(dropper, timerNum){
         }
     }
     else {
-        if (dropper.style.background != "black") {
+        if (dropper.style.background != "black" && dropper.style.background != "green") {
             gameOver(dropper)
         } else {
             continueGame(timerNum, dropper)
@@ -86,13 +87,15 @@ function keepDropping(height, dropper) {
 }
 
 function addDropper() {
+    setTimeout(() => {
     dropper3 = document.createElement('div')
     dropper3.innerText = "$"
     dropper3.className = "dropper3"
     dropper3.style.bottom = "449px"
     dropper3.style.left = `${Math.floor(Math.random()* 450)}px`
     document.querySelector('.game-container').append(dropper3)
-    setTimer(dropper3, "three")
+    setTimer(dropper3, "three")},
+    2000)
 }
 function continueGame(timerNum, dropper) {
     clearInterval(timers[timerNum])
