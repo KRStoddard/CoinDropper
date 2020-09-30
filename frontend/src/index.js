@@ -1,5 +1,7 @@
+const leaderboard = document.querySelector('.leaderboard')
 function main(){
     createUserForm()
+    startButton.style.display = "none"
 }
 function populateLeaderboard(){
 
@@ -10,7 +12,6 @@ function populateLeaderboard(){
 }
 
 function appendUser(users){
-    const leaderboard = document.querySelector('.leaderboard')
     users.forEach(user => {
         let newItem = document.createElement('p')
         newItem.innerText = user
@@ -24,25 +25,39 @@ populateLeaderboard()
 function createUserForm() {
     const form = document.querySelector('form')
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', function(event) {
         event.preventDefault()
 
-        const username = {
-            username: event.target['username'].value
-        }
-        form.reset()
-
+        let username = event.target['username'].value
+        
         const reqObj = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(username)
-        }
+            body: JSON.stringify({username})
+        } 
 
         fetch('http://localhost:3000/users', reqObj)
             .then(resp => resp.json())
-            .then(user => console.log(user))
+            .then(user => showUser(user))
             .catch(error => console.log(error))
-    })
+        
+        form.reset()
+        form.style.display = "none"
+        startButton.style.display = "inline-block"
+        
+        
+        })
+    
 }
+
+function showUser(user) {
+    userDiv = document.createElement('div')
+    userDiv.innerText = `Welcome, ${user.username}`
+    document.querySelector(".info").append(userDiv)
+}
+
+
+
+main()
