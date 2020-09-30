@@ -105,3 +105,10 @@ body {
     box-shadow: 0 4px #666;
     transform: translateY(4px);
 }
+
+.right-container {
+    min-width: 15em;
+    max-width: 24em;
+    margin-left: 550px;
+    margin-top: 6.5 em;
+}

@@ -12,7 +12,7 @@ function startGame(event){
         dropper1.style.bottom = "449px"
         dropper2.style.bottom = "449px"
         dropper2.style.visibility = "hidden"
-      main()
+        main()
         startButton.style.visibility = 'hidden'
     }
 }
@@ -25,6 +25,33 @@ function main() {
     setTimer(dropper1, "one")
     secondDropper(dropper2)
     keyListener()
+    createUserForm()
+}
+
+function createUserForm(){
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', function(event){
+        event.preventDefault()
+
+        const username = {
+            username: event.target['username'].value
+        }
+        form.reset()
+
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(username)
+        }
+
+        fetch('http://localhost:3000/users', reqObj)
+            .then(resp => resp.json())
+            .then(user => console.log(user))
+            .catch(error => console.log(error))
+    })
 }
 function getSpeed(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
