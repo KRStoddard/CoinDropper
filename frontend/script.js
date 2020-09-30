@@ -21,10 +21,10 @@ function startGame(event){
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
 dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
-keyListener()
 
 function main() {
     setTimer(dropper1, "one")
+    keyListener()
     secondDropper(dropper2)
 }
 function getSpeed(min, max) {
@@ -88,6 +88,7 @@ function keepDropping(height, dropper) {
 function addDropper() {
     setTimeout(() => {
     dropper3 = document.createElement('div')
+    dropper3.innerText = "$"
     dropper3.className = "dropper3"
     dropper3.style.bottom = "449px"
     dropper3.style.left = `${Math.floor(Math.random()* 450)}px`
