@@ -8,25 +8,23 @@ const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 const livesDiv = document.querySelector(".lives")
 
+keyListener()
 function startGame(event){
-    if (event.target.innerText === 'Start'){
-        livesDiv.innerText = `Lives: 3`
-        points.innerText = `Points: 0`
-        dropper1.style.bottom = "449px"
-        dropper2.style.bottom = "449px"
-        dropper2.style.visibility = "hidden"
-      main()
-        startButton.style.visibility = 'hidden'
-    }
+    livesDiv.innerText = `Lives: 3`
+    points.innerText = `Points: 0`
+    dropper1.style.bottom = "449px"
+    dropper2.style.bottom = "449px"
+    dropper2.style.visibility = "hidden"
+    beginGame()
+    startButton.style.visibility = 'hidden'
 }
 
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
 dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
 
-function main() {
+function beginGame() {
     setTimer(dropper1, "one")
-    keyListener()
     secondDropper(dropper2)
 }
 function getSpeed(min, max) {
