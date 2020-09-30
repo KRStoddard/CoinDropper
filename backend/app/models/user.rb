@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     def self.leaders
         users = self.all.select{|user| user.games.count > 0}
-        users.map{|user|"#{user.username}, #{user.total_score}"}.sort_by{|user|user.split(', ')[1]}.reverse
+        users.map{|user|"#{user.username}, #{user.total_score}"}.sort_by{|user|(user.split(', ')[1]).to_i}.reverse
     end
     
 end
