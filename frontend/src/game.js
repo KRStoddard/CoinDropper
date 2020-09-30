@@ -8,54 +8,28 @@ const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 
 function startGame(event){
-    if (event.target.innerText === 'Start'){
         dropper1.style.bottom = "449px"
         dropper2.style.bottom = "449px"
         dropper2.style.visibility = "hidden"
-        main()
+        beginGame()
         startButton.style.visibility = 'hidden'
-    }
+    
 }
 
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
 dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
+keyListener()
 
-function main() {
+function beginGame() {
     setTimer(dropper1, "one")
     secondDropper(dropper2)
-    keyListener()
-    createUserForm()
 }
 
-function createUserForm(){
-    const form = document.querySelector('form')
 
-    form.addEventListener('submit', function(event){
-        event.preventDefault()
-
-        const username = {
-            username: event.target['username'].value
-        }
-        form.reset()
-
-        const reqObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(username)
-        }
-
-        fetch('http://localhost:3000/users', reqObj)
-            .then(resp => resp.json())
-            .then(user => console.log(user))
-            .catch(error => console.log(error))
-    })
-}
 function getSpeed(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
+}
 function dropperSpeed(){
     let speed
     let pointsData = parseInt(points.innerText.split(' ')[1])
@@ -167,7 +141,7 @@ function moveCatcherLeft() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left > 0) {
-      catcher.style.left = `${left - 20}px`
+        catcher.style.left = `${left - 20}px`
     }
 }
 
@@ -175,7 +149,7 @@ function moveCatcherRight() {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left < 440) {
-      catcher.style.left = `${left + 20}px`
+        catcher.style.left = `${left + 20}px`
     }
 }
 
