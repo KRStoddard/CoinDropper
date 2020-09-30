@@ -1,8 +1,8 @@
 body {
-    background-image: url("images/bg2.jpg");
+    background-image: url("images/fadebg.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: 140%;
     font-family: fantasy;
 }
 
@@ -12,8 +12,8 @@ body {
     height: 500px;
     margin: auto;
     position: absolute;
-    background-image: url("images/bg.jpg"); 
-    background-size: 144%;
+    background-image: url("images/newbg.png"); 
+    background-size: 165%;
     background-position: center;
     background-repeat: no-repeat;
     background-color: white;
