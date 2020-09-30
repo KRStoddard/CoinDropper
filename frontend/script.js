@@ -21,11 +21,11 @@ function startGame(event){
 let timers = {}
 dropper1.style.left = `${Math.floor(Math.random()* 450)}px`
 dropper2.style.left = `${Math.floor(Math.random()* 450)}px`
+keyListener()
 
 function main() {
     setTimer(dropper1, "one")
     secondDropper(dropper2)
-    keyListener()
 }
 function getSpeed(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
