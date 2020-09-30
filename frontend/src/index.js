@@ -1,7 +1,7 @@
 const leaderboard = document.querySelector('.leaderboard')
 function main(){
     createUserForm()
-    startButton.style.display = "none"
+    startButton.style.visibility = "hidden"
 }
 function populateLeaderboard(){
 
@@ -45,7 +45,7 @@ function createUserForm() {
         
         form.reset()
         form.style.display = "none"
-        startButton.style.display = "inline-block"
+        startButton.style.visibility = "visible"
         
         
         })

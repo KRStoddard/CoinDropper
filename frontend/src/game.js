@@ -12,6 +12,7 @@ let gameId
 keyListener()
 function startGame(event){
     createGame() 
+    livesDiv.innerText = `Lives: 3`
     points.innerText = `Points: 0`
     dropper1.style.bottom = "449px"
     dropper2.style.bottom = "449px"
