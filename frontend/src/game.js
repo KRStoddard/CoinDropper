@@ -7,16 +7,30 @@ const points = document.querySelector(".points")
 const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 const livesDiv = document.querySelector(".lives")
+let gameId 
 
 keyListener()
 function startGame(event){
-    livesDiv.innerText = `Lives: 3`
+    createGame() 
     points.innerText = `Points: 0`
     dropper1.style.bottom = "449px"
     dropper2.style.bottom = "449px"
     dropper2.style.visibility = "hidden"
     beginGame()
     startButton.style.visibility = 'hidden'
+}
+
+function createGame() {
+    let infoDiv = document.querySelector('.info')
+    let userName = infoDiv.children[3].innerText.split(", ")[1]
+    const reqObj = {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({"user": userName})
+    }
+    fetch('http://localhost:3000/games', reqObj)
+    .then(resp => resp.json())
+    .then(resp => {gameId = resp.id})
 }
 
 let timers = {}
@@ -71,7 +85,7 @@ function dropCoin(dropper, timerNum){
     else if (height === 24 && withinRange(dropper)) {
         if (dropper.style.background === "black") {
             let lives = loseLife()
-            if (lives === 0) {
+            if (lives < 1) {
                 gameOver(dropper)
             } else {
                 continueGame(timerNum, dropper)
@@ -87,7 +101,7 @@ function dropCoin(dropper, timerNum){
     else {
         if (dropper.style.background != "black" && dropper.style.background != "green") {
             let lives = loseLife()
-            if (lives === 0) {
+            if (lives < 1 ) {
                 gameOver(dropper)
             } else {
                 continueGame(timerNum, dropper)
@@ -124,11 +138,25 @@ function continueGame(timerNum, dropper) {
 }
 
 function gameOver(dropper) {
+    updateGame()
     alert("Game Over...You Suck!");
-    startButton.style.visibility = 'visible'
+    startButton.style.visibility = "visible"
     clearInterval(timers["one"]) 
     clearInterval(timers["two"]) 
     clearInterval(timers["three"])
+    game = ""
+    leaderboard.innerHTML = "<h3>Leaderboard</h3>"
+    populateLeaderboard()
+}
+
+function updateGame() {
+    const totalPoints = parseInt(points.innerText.split(' ')[1])
+    const reqObj = {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({"points": totalPoints})
+    }
+    fetch(`http://localhost:3000/games/${gameId}`, reqObj)
 }
 
 function randomDropper() {
