@@ -6,9 +6,11 @@ const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
 const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
+const livesDiv = document.querySelector(".lives")
 
 function startGame(event){
     if (event.target.innerText === 'Start'){
+        livesDiv.innerText = `Lives: 3`
         points.innerText = `Points: 0`
         dropper1.style.bottom = "449px"
         dropper2.style.bottom = "449px"
@@ -57,6 +59,12 @@ function secondDropper() {
     }, 7000)
 }
 
+function loseLife() {
+    let lives = parseInt(livesDiv.innerText.split(' ')[1])
+    lives = lives - 1
+    livesDiv.innerText = `Lives: ${lives}`
+    return lives
+}
 function dropCoin(dropper, timerNum){
     let height = parseInt((dropper.style.bottom.replace("px","")), 10)
     if (height > 24){ 
@@ -64,17 +72,28 @@ function dropCoin(dropper, timerNum){
     }
     else if (height === 24 && withinRange(dropper)) {
         if (dropper.style.background === "black") {
-            gameOver(dropper)
+            let lives = loseLife()
+            if (lives === 0) {
+                gameOver(dropper)
+            } else {
+                continueGame(timerNum, dropper)
+            }
         } else if (dropper.style.background === "green") {
             points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2 - 5}`
             continueGame(timerNum, dropper)
         } else {
+            points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) + 5}`
             continueGame(timerNum, dropper) 
         }
     }
     else {
         if (dropper.style.background != "black" && dropper.style.background != "green") {
-            gameOver(dropper)
+            let lives = loseLife()
+            if (lives === 0) {
+                gameOver(dropper)
+            } else {
+                continueGame(timerNum, dropper)
+            }
         } else {
             continueGame(timerNum, dropper)
         }
@@ -100,7 +119,6 @@ function continueGame(timerNum, dropper) {
     dropper.style.left = `${Math.floor(Math.random()* 450)}px`
     dropper.style.bottom = "449px" 
     dropper.style.background = randomDropper()
-    points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) + 5}`
     setTimer(dropper, timerNum)
     if (parseInt(points.innerText.split(' ')[1]) > 300 && !dropper3) {
         addDropper()
