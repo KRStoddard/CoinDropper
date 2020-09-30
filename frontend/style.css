@@ -1,14 +1,16 @@
+
 body {
     background-image: url("images/fadebg.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 140%;
+    background-size: 160%;
     font-family: fantasy;
+    font-size: larger;
 }
 
 .game-container {
     border: solid black 5px;
-    width: 500px;
+    width: 505px;
     height: 500px;
     margin: auto;
     position: absolute;
@@ -17,21 +19,6 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     background-color: white;
-}
-
-.dropper3 {
-    width: 45px;
-    height: 40px;
-    border-radius: 50%;
-    position: absolute;
-    font-size: 35px;
-    text-align: center;
-    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-left: 1px solid rgba(255,255,255,0.3);
-    border-bottom: 1px solid rgba(242,215,12,0.3);
-    border-right: 1px solid rgba(242,215,12,0.3);
-    box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
 }
 
 .dropper1 {
@@ -64,6 +51,21 @@ body {
     box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
 }
 
+.dropper3 {
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 35px;
+    text-align: center;
+    background: linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(242,215,12,0.3);
+    border-right: 1px solid rgba(242,215,12,0.3);
+    box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
+}
+
 .catcher {
     height: 50px;
     width: 65px;
@@ -71,13 +73,14 @@ body {
 }
 
 .points {
-    border: solid black 4px;
+    border: solid black 2px;
     width: 100px;
     height: 30px;
     text-align: center;
     padding-top: 10px;
     margin-bottom: 5px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.678);
+    float: left;
 }
 
 #start-button {
@@ -94,8 +97,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 6px #999;
     position:relative;
-    left:-5px;
-    top:-10px;
+    left: 350px;
 }
   
 #start-button:hover {background-color: #3e8e41}
@@ -104,4 +106,31 @@ body {
     background-color: #3e8e41;
     box-shadow: 0 4px #666;
     transform: translateY(4px);
+}
+
+.right-container {
+    min-width: 15em;
+    max-width: 24em;
+    margin-left: 550px;
+}
+
+.lives {
+    border: solid black 2px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.678);
+    float: left;
+}
+
+.leaderboard {
+    border: solid black 2px;
+    width: 160px;
+    height: 300px;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.678);
 }
