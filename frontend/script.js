@@ -73,7 +73,7 @@ function dropCoin(dropper, timerNum){
         }
     }
     else {
-        if (dropper.style.background != "black") {
+        if (dropper.style.background != "black" && dropper.style.background != "green") {
             gameOver(dropper)
         } else {
             continueGame(timerNum, dropper)
