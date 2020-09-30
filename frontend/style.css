@@ -13,8 +13,8 @@ body {
     margin: auto;
     position: absolute;
     background-image: url("images/newbg.png"); 
-    background-size: 165%;
-    background-position: center;
+    background-size: 160%;
+    background-position: right;
     background-repeat: no-repeat;
     background-color: white;
 }
