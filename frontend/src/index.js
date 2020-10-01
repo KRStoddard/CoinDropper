@@ -5,12 +5,18 @@ const form = document.querySelector('form')
 const buttons = document.querySelector('.buttons')
 const logoutButton = document.querySelector('#logout-button')
 const infoDiv = document.querySelector('.info')
+const docBody = document.querySelector('body')
+const gameBody = document.querySelector('.game-container')
+const legend = document.querySelector('.game-insts')
+let theme
+
 //main executes functions that need triggering at start
 
 const main = () => {
     createUserForm()
     populateLeaderboard()
     createLogOutListener()
+    themeListener()
     buttons.style.visibility = "hidden"
 }
 
@@ -86,6 +92,45 @@ const showUser = (user) => {
     userDiv = document.createElement('div')
     userDiv.innerText = `Welcome, ${user.username}`
     document.querySelector(".info").append(userDiv)
+}
+
+//add Event Listener for Theme buttons
+
+const themeListener = () => {
+    const themeContainer = document.querySelector('.theme-buttons')
+    themeContainer.addEventListener("click", themeDirector)
+}
+
+function themeDirector(e) {
+    if (e.target.id === "halloween") {
+        changeTheme(
+            'images/hwn_tpnt.jpg',
+            'images/hwn.jpg',
+            "🟠 Orange coins double points",
+            "halloween")
+    }
+    if (e.target.id === "classic") {
+        changeTheme(
+        'images/fadebg.png',
+        'images/newbg.png',
+        "🟢 Green coins double points",
+        "classic")
+    }
+    if (e.target.id === "xmas") {
+        changeTheme(
+        'images/xmas_transparent.jpg',
+        'images/xmas.jpg',
+        "🔴 Red coins double points",
+        "xmas")
+    }
+}
+
+
+const changeTheme = (background, game, coin, themeName) => {
+    docBody.style.backgroundImage = `url(${background})`
+    gameBody.style.backgroundImage = `url(${game})`
+    legend.children[5].innerHTML = coin
+    theme = themeName
 }
 
 //executes starting functions

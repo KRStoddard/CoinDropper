@@ -7,6 +7,11 @@
         <script src="src/index.js" type="text/javascript" defer></script>
     </head>
     <body>
+        <nav class="theme-buttons">
+            <button id="classic"> Classic </button>
+            <button id="halloween"> Halloween </button>
+            <button id="xmas"> Winter </button>
+        </nav>
         <h1> Coin Catcher </h1>
         <audio id="music" src="audio/song.mp3" controls loop></audio>
 
@@ -21,9 +26,9 @@
         </div>
         <div class="game-container">
 
-            <div class="dropper1" style="bottom: 449px;"></div>
-            <div class="dropper2" style="bottom: 449px; visibility: hidden;"></div> 
-            <div class="dropper3" style="bottom: 449px; visibility: hidden;"></div>
+            <div class="dropper1" id = "gold" style="bottom: 449px;"></div>
+            <div class="dropper2" id = "gold" style="bottom: 449px; visibility: hidden;"></div> 
+            <div class="dropper3" id = "gold" style="bottom: 449px; visibility: hidden;"></div>
             <img class="catcher" src="images/pot.png" alt="pot" style="bottom: 0px; left:220px;">
 
         </div>
