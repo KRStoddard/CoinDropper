@@ -153,3 +153,9 @@ h1 {
 .underline {
     text-decoration: underline;
 }
+
+audio {
+    float: left;
+    width: 150px;
+    height: 50px;
+}
