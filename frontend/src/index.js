@@ -102,6 +102,7 @@ const themeListener = () => {
     themeContainer.addEventListener("click", themeDirector)
 }
 
+//themeDirector will start up changeTheme with the appropriate modifiers
 function themeDirector(e) {
     if (e.target.id === "halloween") {
         changeTheme(
@@ -126,7 +127,7 @@ function themeDirector(e) {
     }
 }
 
-
+//change theme changes static display of the theme
 const changeTheme = (background, game, coin, themeName) => {
     docBody.style.backgroundImage = `url(${background})`
     gameBody.style.backgroundImage = `url(${game})`

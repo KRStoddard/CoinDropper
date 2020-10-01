@@ -250,7 +250,8 @@ const updateGame = () => {
     fetch(`http://localhost:3000/games/${gameId}`, reqObj)
 }
 
-//randomDropper determines whether a dropper will be regular, green, or black
+//randomDropper determines whether a dropper will be regular, doublepoints color, or black
+//doublepoint color is based on theme
 
 const randomDropper = () => {
     let randomColor = Math.random()
