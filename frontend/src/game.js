@@ -3,7 +3,7 @@
 
 const dropper1 = document.querySelector(".dropper1")
 const dropper2 = document.querySelector(".dropper2")
-let dropper3
+const dropper3 = document.querySelector(".dropper3")
 const catcher = document.querySelector(".catcher")
 const points = document.querySelector(".points")
 const container = document.querySelector('.game-container')
@@ -47,10 +47,8 @@ function startGame(event){
     points.innerText = `Points: 0`
     dropper1.style.bottom = "449px"
     dropper2.style.bottom = "449px"
-    if (dropper3) {
-        dropper3.parentNode.removeChild(dropper3)
-    }
     dropper2.style.visibility = "hidden"
+    dropper3.style.visibility = "hidden"
     beginGame()
     buttons.style.visibility = 'hidden'
 }
@@ -155,10 +153,7 @@ const dropCoin = (dropper, timerNum) => {
             }
             //if the catcher is green it doubles points
         } else if (dropper.style.background === "green") {
-            //but you only need to double points if points are above zero
-            if ((parseInt(points.innerText.split(' ')[1]) > 0)){
             points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2}`
-            }
             //then you continue the game
             continueGame(timerNum, dropper)
         } else {
@@ -195,11 +190,8 @@ const keepDropping = (height, dropper) => {
 
 const addDropper = () => {
     setTimeout(() => {
-    dropper3 = document.createElement('div')
-    dropper3.className = "dropper3"
-    dropper3.style.bottom = "449px"
+    dropper3.style.visibility = "visible"
     dropperStartPoint(dropper3)
-    document.querySelector('.game-container').append(dropper3)
     setTimer(dropper3, "three")},
     100)
 }
@@ -214,7 +206,7 @@ const continueGame = (timerNum, dropper) => {
     dropper.style.background = randomDropper()
     setTimer(dropper, timerNum)
     //if you have reached 300 points, it will add a third dropper if it doesn't already exist
-    if (parseInt(points.innerText.split(' ')[1]) > 300 && !dropper3) {
+    if (parseInt(points.innerText.split(' ')[1]) > 300 && dropper3.style.visibility === "hidden") {
         addDropper()
     }
 }
