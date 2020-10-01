@@ -3,7 +3,7 @@ body {
     background-image: url("images/fadebg.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 160%;
+    background-size: auto;
     font-family: fantasy;
     font-size: larger;
 }
@@ -109,8 +109,8 @@ body {
 }
 
 .right-container {
-    min-width: 15em;
-    max-width: 24em;
+    min-width: 50%;
+    max-width: 50%;
     margin-left: 550px;
 }
 
@@ -140,7 +140,7 @@ body {
     width: 200px;
     height: 400px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: relative;
+    position: absolute;
     left:750px;
     bottom:600px;
     text-align: center;
