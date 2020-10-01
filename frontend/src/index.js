@@ -49,7 +49,7 @@ const createLogOutListener = () => {
 }
 
 function logOut(event){
-    infoDiv.children[3].innerText = ""
+    document.querySelector("h1").removeChild(userDiv)
     form.style.visibility = "visible"
     buttons.style.visibility = "hidden"
 }
