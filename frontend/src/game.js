@@ -92,7 +92,9 @@ function dropCoin(dropper, timerNum){
                 continueGame(timerNum, dropper)
             }
         } else if (dropper.style.background === "green") {
+            if ((parseInt(points.innerText.split(' ')[1]) > 0)){
             points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2 - 5}`
+            }
             continueGame(timerNum, dropper)
         } else {
             points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) + 5}`
