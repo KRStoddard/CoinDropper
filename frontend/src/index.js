@@ -8,6 +8,7 @@ const infoDiv = document.querySelector('.info')
 const docBody = document.querySelector('body')
 const gameBody = document.querySelector('.game-container')
 const legend = document.querySelector('.game-insts')
+const title = document.querySelector("h1")
 let theme
 
 //main executes functions that need triggering at start
@@ -49,7 +50,7 @@ const createLogOutListener = () => {
 }
 
 function logOut(event){
-    document.querySelector("h1").removeChild(userDiv)
+    title.removeChild(userDiv)
     form.style.visibility = "visible"
     buttons.style.visibility = "hidden"
 }

@@ -60,7 +60,7 @@ function startGame(event){
 
 const createGame = () => {
     
-    let userName = infoDiv.children[3].innerText.split(", ")[1]
+    let userName = title.firstElementChild.innerText.split(", ")[1]
     const reqObj = {
         method: "POST",
         headers: {"Content-Type": "application/json"},
