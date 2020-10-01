@@ -52,14 +52,16 @@ function startGame(event){
     }
     dropper2.style.visibility = "hidden"
     beginGame()
-    startButton.style.visibility = 'hidden'
+    buttons.style.visibility = 'hidden'
 }
+
+
 
 //createGame funtion creates a game with the foreign key linking the signed in user
 //it saves this game instance to the database
 
 const createGame = () => {
-    let infoDiv = document.querySelector('.info')
+    
     let userName = infoDiv.children[3].innerText.split(", ")[1]
     const reqObj = {
         method: "POST",
@@ -224,7 +226,7 @@ const continueGame = (timerNum, dropper) => {
 const gameOver = (dropper) => {
     updateGame()
     alert("Game Over...You Suck!");
-    startButton.style.visibility = "visible"
+    buttons.style.visibility = "visible"
     clearInterval(timers["one"]) 
     clearInterval(timers["two"]) 
     clearInterval(timers["three"])

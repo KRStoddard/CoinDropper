@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :games
+    validates :username, length: { minimum: 1 }
 
     #total_score calculates the average score per game of a user instance
 

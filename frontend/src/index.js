@@ -2,13 +2,16 @@
 
 const leaderboard = document.querySelector('.leaderboard')
 const form = document.querySelector('form')
-
+const buttons = document.querySelector('.buttons')
+const logoutButton = document.querySelector('#logout-button')
+const infoDiv = document.querySelector('.info')
 //main executes functions that need triggering at start
 
 const main = () => {
     createUserForm()
     populateLeaderboard()
-    startButton.style.visibility = "hidden"
+    createLogOutListener()
+    buttons.style.visibility = "hidden"
 }
 
 //populateLeaderboard returns information about top scoreres
@@ -35,37 +38,47 @@ const appendUser = (users) => {
 //createUserForm allows user to create a username or sign in
 //it either pulls from or saves to database
 
-const createFormListener = () => {
-    
+const createLogOutListener = () => {
+    logoutButton.addEventListener('click', logOut)
+}
+
+function logOut(event){
+    infoDiv.children[3].innerText = ""
+    form.style.visibility = "visible"
+    buttons.style.visibility = "hidden"
 }
 
 const createUserForm = () => {
+    
     
     form.addEventListener('submit', function(event) {
         event.preventDefault()
         let username = event.target['username'].value
 
-        const reqObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username})
-        } 
-        
-        fetch('http://localhost:3000/users', reqObj)
-            .then(resp => resp.json())
-            .then(user => showUser(user))
-            .catch(error => console.log(error))
-        //once username is chosen the form resets
-        //the form becomes invisible
-        //and the start button appears
-        form.reset()
-        form.style.visibility = "hidden"
-        startButton.style.visibility = "visible"
+        if (username.length === 0){
+            alert("Username cannot be blank!")
+        } else {
+            const reqObj = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username })
+            } 
+            fetch('http://localhost:3000/users', reqObj)
+                .then(resp => resp.json())
+                .then(user => showUser(user))
+                .catch(error => console.log(error))
+            //once username is chosen the form resets
+            //the form becomes invisible
+            //and the start button appears
+            form.reset()
+            form.style.visibility = "hidden"
+            buttons.style.visibility = "visible"
+        }
     })
-    
 }
+
 
 //showUser will display the chosen username on the screen
 
