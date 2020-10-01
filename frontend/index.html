@@ -8,8 +8,7 @@
     </head>
     <body>
         <h1> Coin Catcher </h1>
-
-        <audio src="audio/song.mp3" controls loop="loop"></audio>
+        <audio id="music" src="audio/song.mp3" controls loop></audio>
 
         <div class="all-game">
         <div class="info">
@@ -41,6 +40,7 @@
             </div>
             <div class="leaderboard">
                 <h2 class="underline">Leaderboard</h2>
+                <h5>(Average Points)</h5>
             </div>
         </div>
     </div>
@@ -48,9 +48,11 @@
             <h2 class="underline">Game Guide</h2>
             <h3>Move left: ◀</h3>
             <h3>Move right: ▶</h3>
-            <h4>Gold coins worth 5pts</h4>
-            <h4>Black coins loose a life</h4>
-            <h4>Green coins double points</h4>
+            <h4><img class="emoji" src="images/coin.png"> Gold coins worth 5pts</h4>
+            <h4>⚫️ Black coins loose a life</h4>
+            <h4>🟢 Green coins double points</h4>
+            <img class="emoji" src="images/toggle.png">
+            <h4 id="toggle">Toggle music on and off</h4>
         </div>
     </body>
 </html>
