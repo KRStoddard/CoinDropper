@@ -1,11 +1,11 @@
 
+
 body {
     background-image: url("images/fadebg.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto;
+    background-size: cover;
     font-family: fantasy;
-    font-size: larger;
 }
 
 .game-container {
@@ -99,10 +99,35 @@ body {
     position:relative;
     left: 350px;
 }
-  
+
 #start-button:hover {background-color: #3e8e41}
-  
+
 #start-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 4px #666;
+    transform: translateY(4px);
+}
+
+#logout-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    /* text-decoration: none; */
+    /* outline: none; */
+    color: #fff;
+    background-color: #448345;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 6px #999;
+    position:relative;
+    left: 150px;
+}
+
+#logout-button:hover {background-color: #3e8e41}
+
+#logout-button:active {
     background-color: #3e8e41;
     box-shadow: 0 4px #666;
     transform: translateY(4px);
@@ -128,7 +153,7 @@ body {
 .leaderboard {
     border: solid black 2px;
     width: 160px;
-    height: 280px;
+    height: 320px;
     text-align: center;
     padding-top: 5px;
     margin-bottom: 5px;
@@ -142,14 +167,20 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
     position: absolute;
     left:750px;
-    bottom:600px;
+    bottom:409px;
     text-align: center;
 }
 
-#login-form {
-    /* background-color: red; */
+h1 {
+    text-align: center;
 }
 
-h1 {
-    
+.underline {
+    text-decoration: underline;
+}
+
+audio {
+    float: left;
+    width: 150px;
+    height: 50px;
 }
