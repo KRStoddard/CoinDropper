@@ -83,9 +83,10 @@ const createUserForm = () => {
 //showUser will display the chosen username on the screen
 
 const showUser = (user) => {
-    userDiv = document.createElement('div')
-    userDiv.innerText = `Welcome, ${user.username}`
-    document.querySelector(".info").append(userDiv)
+    userDiv = document.createElement('h4')
+    userDiv.innerHTML = `Welcome, ${user.username}`
+    document.querySelector("h1").append(userDiv)
+    userDiv.className = "welcome"
 }
 
 //executes starting functions

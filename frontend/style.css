@@ -85,6 +85,17 @@ body {
     overflow-wrap: break-word;
 }
 
+.lives {
+    border: solid black 2px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    float: left;
+}
+
 #start-button {
     display: inline-block;
     padding: 25px 40px;
@@ -99,7 +110,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 6px #999;
     position:relative;
-    top: 150px;
+    top: 80px;
     left: 213px;
 }
 
@@ -117,7 +128,7 @@ body {
 
 #logout-button {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 25px 40px;
     font-size: 14px;
     cursor: pointer;
     text-align: center;
@@ -129,7 +140,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 6px #999;
     position:relative;
-    left: 150px;
+    top: 160px;
+    left: 90px;
 }
 
 #logout-button:hover {background-color: #3e8e41}
@@ -144,17 +156,6 @@ body {
     min-width: 50%;
     max-width: 50%;
     margin-left: 550px;
-}
-
-.lives {
-    border: solid black 2px;
-    width: 100px;
-    height: 30px;
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 5px;
-    background-color: rgba(255, 255, 255, 0.5);
-    float: left;
 }
 
 .leaderboard {
@@ -174,7 +175,7 @@ body {
     width: 250px;
     height: 420px;
     background-color: rgba(255, 255, 255, 0.5);
-    position: absolute;
+    position: relative;
     left:750px;
     bottom:428px;
     text-align: center;
@@ -203,3 +204,7 @@ audio {
     margin-top: 0%;
 }
 
+.welcome {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
