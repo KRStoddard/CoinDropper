@@ -1,11 +1,11 @@
 
+
 body {
     background-image: url("images/fadebg.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 160%;
+    background-size: cover;
     font-family: fantasy;
-    font-size: larger;
 }
 
 .game-container {
@@ -128,7 +128,7 @@ body {
 .leaderboard {
     border: solid black 2px;
     width: 160px;
-    height: 280px;
+    height: 320px;
     text-align: center;
     padding-top: 5px;
     margin-bottom: 5px;
@@ -142,6 +142,14 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
     position: relative;
     left:750px;
-    bottom:600px;
+    bottom:409px;
     text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.underline {
+    text-decoration: underline;
 }
