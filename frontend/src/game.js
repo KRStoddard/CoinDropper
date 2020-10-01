@@ -152,7 +152,7 @@ const dropCoin = (dropper, timerNum) => {
                 continueGame(timerNum, dropper)
             }
             //if the catcher is green it doubles points
-        } else if (dropper.style.background === "green") {
+        } else if (dropper.style.background === "green" || dropper.style.background === "orange" || dropper.style.background === "red") {
             points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2}`
             //then you continue the game
             continueGame(timerNum, dropper)
@@ -164,7 +164,7 @@ const dropCoin = (dropper, timerNum) => {
     }
     else {
         //you only lose a life for missing a coin if it is a regular coin
-        if (dropper.style.background != "black" && dropper.style.background != "green") {
+        if (dropper.id === "gold") {
             let lives = loseLife()
             //if lives is less than one it causes a gameOver
             if (lives < 1 ) {
@@ -203,11 +203,22 @@ const continueGame = (timerNum, dropper) => {
     clearInterval(timers[timerNum])
     dropperStartPoint(dropper)
     dropper.style.bottom = "449px" 
-    dropper.style.background = randomDropper()
+    dropper.style.background = randomDropper() 
+    setDropperId(dropper)
     setTimer(dropper, timerNum)
     //if you have reached 300 points, it will add a third dropper if it doesn't already exist
     if (parseInt(points.innerText.split(' ')[1]) > 300 && dropper3.style.visibility === "hidden") {
         addDropper()
+    }
+}
+
+//setDropperId sets id to gold if a coin and to nothing if anything else
+
+function setDropperId(dropper) {
+    if (dropper.style.background.includes("linear")) {
+        dropper.id = "gold"
+    } else {
+        dropper.id = ""
     }
 }
 
@@ -247,7 +258,13 @@ const randomDropper = () => {
         return "black"
     }
     else if (randomColor > .25 && randomColor < .4) {
+        if (theme === "halloween") {
+            return "orange"
+        }else if (theme === "xmas") {
+            return "red"
+        } else {
         return "green"
+        }
     }
     else {
         return "linear-gradient(45deg,  rgb(201, 179, 15) 0%,rgba(255,255,255,1) 56%,rgb(211, 174, 10) 96%)"
