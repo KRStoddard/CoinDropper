@@ -27,7 +27,6 @@ function createUserForm() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault()
-
         let username = event.target['username'].value
         
         const reqObj = {
