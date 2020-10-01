@@ -1,10 +1,11 @@
 //global variables
 
 const leaderboard = document.querySelector('.leaderboard')
+const form = document.querySelector('form')
 
 //main executes functions that need triggering at start
 
-function main(){
+const main = () => {
     createUserForm()
     populateLeaderboard()
     startButton.style.visibility = "hidden"
@@ -13,7 +14,7 @@ function main(){
 //populateLeaderboard returns information about top scoreres
 //and triggers the function that info onto the dom in a leaderboard
 
-function populateLeaderboard(){
+const populateLeaderboard = () => {
 
     fetch('http://localhost:3000/users')
         .then(resp => resp.json())
@@ -23,7 +24,7 @@ function populateLeaderboard(){
 
 //appendUser loads the the leader info onto the DOM
 
-function appendUser(users){
+const appendUser = (users) => {
     users.forEach(user => {
         let newItem = document.createElement('p')
         newItem.innerText = user
@@ -34,9 +35,12 @@ function appendUser(users){
 //createUserForm allows user to create a username or sign in
 //it either pulls from or saves to database
 
-function createUserForm() {
-    const form = document.querySelector('form')
+const createFormListener = () => {
+    
+}
 
+const createUserForm = () => {
+    
     form.addEventListener('submit', function(event) {
         event.preventDefault()
         let username = event.target['username'].value
@@ -65,7 +69,7 @@ function createUserForm() {
 
 //showUser will display the chosen username on the screen
 
-function showUser(user) {
+const showUser = (user) => {
     userDiv = document.createElement('div')
     userDiv.innerText = `Welcome, ${user.username}`
     document.querySelector(".info").append(userDiv)

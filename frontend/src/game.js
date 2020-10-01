@@ -14,7 +14,7 @@ let timers = {}
 
 //these assign random starting point for droppers
 
-function dropperStartPoint(dropper) {
+const dropperStartPoint = (dropper) => {
     dropper.style.left = `${Math.floor(Math.random()* 450)}px`
 }
 
@@ -22,7 +22,7 @@ function dropperStartPoint(dropper) {
 //listed here because it only needs to be declared once
 //if put inside startGame then the effect builds on itself
 
-function keyListener() {
+const keyListener = () => {
     startButton.addEventListener('click', startGame);
     document.addEventListener('keydown', function(e) {
         if (e.key === "ArrowLeft") {
@@ -55,7 +55,7 @@ function startGame(event){
 //createGame funtion creates a game with the foreign key linking the signed in user
 //it saves this game instance to the database
 
-function createGame() {
+const createGame = () => {
     let infoDiv = document.querySelector('.info')
     let userName = infoDiv.children[3].innerText.split(", ")[1]
     const reqObj = {
@@ -70,7 +70,7 @@ function createGame() {
 
 //beginGame starts the timers for droppers
 
-function beginGame() {
+const beginGame = () => {
     dropperStartPoint(dropper1)
     setTimer(dropper1, "one")
     dropperStartPoint(dropper2)
@@ -80,16 +80,16 @@ function beginGame() {
 //setTimer is the abstracted dynamic timer for the movement speed of droppers
 //it utilizes the helper method dropperSpeed to determine what the speed should be
 
-function setTimer(dropper, timerNum){
+const setTimer = (dropper, timerNum) => {
     clearInterval(timers[timerNum])
-    timers[timerNum] = setInterval(function(){dropCoin(dropper, timerNum)}, dropperSpeed())
+    timers[timerNum] = setInterval(() => {dropCoin(dropper, timerNum)}, dropperSpeed())
 }
 
 //this causes a delay in the first instance of the second dropper to begin
 //keeps the droppers from falling too closely together at the beginning of the game
 
-function secondDropper() {
-    setTimeout(function(){
+const secondDropper = () => {
+    setTimeout(() => {
         dropper2.style.visibility = ""
         setTimer(dropper2, "two")
     }, 7000)
@@ -97,14 +97,14 @@ function secondDropper() {
 
 //getSpeed creates a method produce a randomized number within a range
 
-function getSpeed(min, max) {
+const getSpeed = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
 //dropperSpeed is used to determine the range of how fast a dropper can move
 //it is based on how many points have been earned to add difficulty throughout time
 
-function dropperSpeed(){
+const dropperSpeed = () => {
     let speed
     let pointsData = parseInt(points.innerText.split(' ')[1])
     if (pointsData < 20){
@@ -121,7 +121,7 @@ function dropperSpeed(){
 
 //loseLife is a method that subtracts one from existing lives and returns result
 
-function loseLife() {
+const loseLife = () => {
     let lives = parseInt(livesDiv.innerText.split(' ')[1])
     lives = lives - 1
     livesDiv.innerText = `Lives: ${lives}`
@@ -130,7 +130,7 @@ function loseLife() {
 
 //dropCoin determines whether a dropper needs to keep dropping, has been caught, or was missed
 
-function dropCoin(dropper, timerNum){
+const dropCoin = (dropper, timerNum) => {
     let height = parseInt((dropper.style.bottom.replace("px","")), 10)
     //if the height is above the catcher location, the dropper keeps going without consequence
     if (height > 24){ 
@@ -182,13 +182,13 @@ function dropCoin(dropper, timerNum){
 
 //keepDropping moves the dropper down by 25 pixels
 
-function keepDropping(height, dropper) {
+const keepDropping = (height, dropper) => {
     dropper.style.bottom = `${height - 25}px`
 }
 
 //addDropper adds a third dropper
 
-function addDropper() {
+const addDropper = () => {
     setTimeout(() => {
     dropper3 = document.createElement('div')
     dropper3.className = "dropper3"
@@ -202,7 +202,7 @@ function addDropper() {
 //continue game clears the dropper's setInterval and resets it
 //to drop again from the top of the gamescreen
 
-function continueGame(timerNum, dropper) {
+const continueGame = (timerNum, dropper) => {
     clearInterval(timers[timerNum])
     dropperStartPoint(dropper)
     dropper.style.bottom = "449px" 
@@ -218,7 +218,7 @@ function continueGame(timerNum, dropper) {
 //it alerts you that you lost
 //and then it resets the game
 
-function gameOver(dropper) {
+const gameOver = (dropper) => {
     updateGame()
     alert("Game Over...You Suck!");
     startButton.style.visibility = "visible"
@@ -232,7 +232,7 @@ function gameOver(dropper) {
 
 //updateGame is what updates the database with the points
 
-function updateGame() {
+const updateGame = () => {
     const totalPoints = parseInt(points.innerText.split(' ')[1])
     const reqObj = {
         method: "PATCH",
@@ -244,7 +244,7 @@ function updateGame() {
 
 //randomDropper determines whether a dropper will be regular, green, or black
 
-function randomDropper() {
+const randomDropper = () => {
     let randomColor = Math.random()
     if (randomColor < .25) {
         return "black"
@@ -259,7 +259,7 @@ function randomDropper() {
 
 //moveCatcher functions move the catcher left or right based on keypresses
 
-function moveCatcherLeft() {
+const moveCatcherLeft = () => {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left > 0) {
@@ -267,7 +267,7 @@ function moveCatcherLeft() {
     }
 }
 
-function moveCatcherRight() {
+const moveCatcherRight = () => {
     var leftNumbers = catcher.style.left.replace('px', '');
     var left = parseInt(leftNumbers, 10)
     if (left < 440) {
@@ -278,7 +278,7 @@ function moveCatcherRight() {
 //withinRange determines if a dropper is relatively centered on top of catcher
 //used to determine if the dropper was caught successfully
 
-function withinRange(dropper){
+const withinRange = (dropper) => {
     let catcherLeft = parseInt((catcher.style.left.replace("px", "")), 10)
     let dropperLeft = parseInt((dropper.style.left.replace("px", "")), 10)
     let result
