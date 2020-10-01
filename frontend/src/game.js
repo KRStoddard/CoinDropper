@@ -44,10 +44,12 @@ keyListener()
 function startGame(event){
     createGame() 
     livesDiv.innerText = `Lives: 3`
-    dropper3 = ""
     points.innerText = `Points: 0`
     dropper1.style.bottom = "449px"
     dropper2.style.bottom = "449px"
+    if (dropper3) {
+        dropper3.parentNode.removeChild(dropper3)
+    }
     dropper2.style.visibility = "hidden"
     beginGame()
     startButton.style.visibility = 'hidden'
@@ -197,7 +199,7 @@ const addDropper = () => {
     dropperStartPoint(dropper3)
     document.querySelector('.game-container').append(dropper3)
     setTimer(dropper3, "three")},
-    2000)
+    100)
 }
 
 //continue game clears the dropper's setInterval and resets it
