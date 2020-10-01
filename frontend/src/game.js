@@ -152,7 +152,7 @@ const dropCoin = (dropper, timerNum) => {
         } else if (dropper.style.background === "green") {
             //but you only need to double points if points are above zero
             if ((parseInt(points.innerText.split(' ')[1]) > 0)){
-            points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2 - 5}`
+            points.innerText = `Points: ${parseInt(points.innerText.split(' ')[1]) * 2}`
             }
             //then you continue the game
             continueGame(timerNum, dropper)
