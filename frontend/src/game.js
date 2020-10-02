@@ -42,6 +42,7 @@ keyListener()
 //it also gets rid of the start button so it can't be pressed while game is running
 
 function startGame(event){
+    document.querySelector('audio').play()
     createGame() 
     livesDiv.innerText = `Lives: 3`
     points.innerText = `Points: 0`
@@ -227,6 +228,7 @@ function setDropperId(dropper) {
 //and then it resets the game
 
 const gameOver = (dropper) => {
+    document.querySelector('audio').pause()
     updateGame()
     alert("Game Over...You Suck!");
     buttons.style.visibility = "visible"
