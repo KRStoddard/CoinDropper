@@ -9,6 +9,8 @@ const points = document.querySelector(".points")
 const container = document.querySelector('.game-container')
 const startButton = document.querySelector('#start-button')
 const livesDiv = document.querySelector(".lives")
+const song = document.querySelector('#music')
+const sound = document.querySelector('#sound')
 let gameId 
 let timers = {}
 
@@ -42,7 +44,7 @@ keyListener()
 //it also gets rid of the start button so it can't be pressed while game is running
 
 function startGame(event){
-    document.querySelector('audio').play()
+    song.play()
     createGame() 
     livesDiv.innerText = `Lives: 3`
     points.innerText = `Points: 0`
@@ -142,6 +144,7 @@ const dropCoin = (dropper, timerNum) => {
     }
     //if the height is at the catcher and the catcher is underneath it needs to respond to the catch
     else if (height === 24 && withinRange(dropper)) {
+        sound.play()
         //if the dropper is black you lose a life if you catch it
         if (dropper.style.background === "black") {
             let lives = loseLife()
@@ -228,7 +231,7 @@ function setDropperId(dropper) {
 //and then it resets the game
 
 const gameOver = (dropper) => {
-    document.querySelector('audio').pause()
+    song.pause()
     updateGame()
     alert("Game Over...You Suck!");
     buttons.style.visibility = "visible"
